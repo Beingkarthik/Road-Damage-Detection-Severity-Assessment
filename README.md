@@ -1,12 +1,12 @@
 ﻿# RoadLens — Road Damage Detection & Severity Assessment
 
-**Deep Learning · Computer Vision · YOLOv8 · Streamlit**
+Deep Learning · Computer Vision · YOLOv8 · Streamlit
 
 RoadLens is a deep-learning-based road damage detection prototype that uses a trained YOLO object detection model to identify and localize potential road damage in images. It provides a web interface for uploading road photographs, reviewing predicted damage regions, inspecting confidence scores, and downloading annotated results.
 
-**Live application:** [Launch RoadLens](https://road-damage-detection-severity-assessment-adpmrfbghjatfs8zck3z.streamlit.app/)
+Live application: [Launch RoadLens](https://road-damage-detection-severity-assessment-adpmrfbghjatfs8zck3z.streamlit.app/)
 
-**Source code:** [GitHub repository](https://github.com/Beingkarthik/Road-Damage-Detection-Severity-Assessment)
+Source code: [GitHub repository](https://github.com/Beingkarthik/Road-Damage-Detection-Severity-Assessment)
 
 > Research prototype: predictions are experimental and must not be treated as validated engineering assessments or used alone to make road-safety decisions.
 
@@ -58,16 +58,16 @@ The intended goal is to support preliminary visual inspection—not to replace r
 
 ## Deep Learning Approach
 
-RoadLens uses **YOLOv8n**, a lightweight YOLO object detection model, through the Ultralytics framework.
+RoadLens uses YOLOv8n, a lightweight YOLO object detection model, through the Ultralytics framework.
 
 The inference workflow is:
 
-1. **Input:** A user uploads a road image.
-2. **Preprocessing:** The image is normalized and passed to the detector.
-3. **Deep learning inference:** The trained model predicts candidate damage bounding boxes, class IDs, and confidence scores.
-4. **Confidence filtering:** Predictions below the selected confidence threshold are filtered out.
-5. **Visualization:** The application renders the predicted regions on the image.
-6. **Results:** The user reviews the detected classes and confidence scores and can download the annotated image.
+1. Input: A user uploads a road image.
+2. Preprocessing: The image is normalized and passed to the detector.
+3. Deep learning inference: The trained model predicts candidate damage bounding boxes, class IDs, and confidence scores.
+4. Confidence filtering: Predictions below the selected confidence threshold are filtered out.
+5. Visualization: The application renders the predicted regions on the image.
+6. Results: The user reviews the detected classes and confidence scores and can download the annotated image.
 
 YOLO predicts object locations and categories in a single detection pipeline. RoadLens uses the trained checkpoint for inference; it does not retrain the model when a user uploads an image.
 
@@ -87,14 +87,14 @@ The application does not have a dedicated normal-road class. No detections do no
 
 ## Application Features
 
-- **Public web interface:** Access the deployed application in a browser.
-- **Image upload:** Analyze supported image formats.
-- **Adjustable confidence threshold:** Control which predictions are displayed.
-- **Inference image size:** Configure the model's inference resolution.
-- **Annotated predictions:** Inspect predicted damage regions and bounding boxes.
-- **Detection details:** Review predicted categories, confidence scores, and bounding-box coordinates.
-- **Download:** Save the annotated image for further review.
-- **Private checkpoint retrieval:** Download the trained model from a private Hugging Face repository using a server-side secret.
+- Public web interface: Access the deployed application in a browser.
+- Image upload: Analyze supported image formats.
+- Adjustable confidence threshold: Control which predictions are displayed.
+- Inference image size: Configure the model's inference resolution.
+- Annotated predictions: Inspect predicted damage regions and bounding boxes.
+- Detection details: Review predicted categories, confidence scores, and bounding-box coordinates.
+- Download: Save the annotated image for further review.
+- Private checkpoint retrieval: Download the trained model from a private Hugging Face repository using a server-side secret.
 
 ## Technology Stack
 
@@ -111,7 +111,7 @@ The application does not have a dedicated normal-road class. No detections do no
 
 ## Dataset and Preparation
 
-The project is based on the **RDD2022 (Road Damage Detection 2022)** dataset.
+The project is based on the RDD2022 (Road Damage Detection 2022) dataset.
 
 RDD2022 provides road images annotated for road damage detection. The project uses five selected categories: D00, D10, D20, D40, and D44.
 
@@ -144,12 +144,12 @@ The available validation results for the trained checkpoint are:
 
 These results indicate that performance is limited and varies considerably by class. In particular, D40 and D44 have very low validation mAP. A successful application run confirms that the model can execute inference; it does not establish high detection accuracy.
 
-**Metric definitions**
+Metric definitions
 
-- **Precision:** The proportion of predicted detections that are correct under the evaluation matching criteria.
-- **Recall:** The proportion of ground-truth objects successfully detected.
-- **mAP@0.50:** Mean average precision at an intersection-over-union threshold of 0.50.
-- **mAP@0.50:0.95:** Mean average precision averaged over IoU thresholds from 0.50 to 0.95.
+- Precision: The proportion of predicted detections that are correct under the evaluation matching criteria.
+- Recall: The proportion of ground-truth objects successfully detected.
+- mAP@0.50: Mean average precision at an intersection-over-union threshold of 0.50.
+- mAP@0.50:0.95: Mean average precision averaged over IoU thresholds from 0.50 to 0.95.
 
 Metrics depend on the dataset split, annotation quality, class distribution, and evaluation configuration. They should not be compared with results from other experiments unless the evaluation protocols are compatible.
 
@@ -243,7 +243,7 @@ The current application expects the checkpoint file named:
 ### Configure Hugging Face access
 
 1. Create a Hugging Face access token with the minimum read permissions needed for the private model repository.
-2. In Streamlit Community Cloud, open the app's settings and locate **Secrets**.
+2. In Streamlit Community Cloud, open the app's settings and locate Secrets.
 3. Add the following TOML entry, substituting your own token locally:
 
 ```toml
@@ -252,7 +252,7 @@ HF_TOKEN = "YOUR_HUGGING_FACE_READ_TOKEN"
 
 4. Save the secret and reboot the application if necessary.
 
-**Security requirements**
+Security requirements
 
 - Never commit tokens, passwords, or credentials to GitHub.
 - Never place the token directly in `app.py` or `requirements.txt`.
@@ -311,6 +311,7 @@ This project uses the RDD2022 road damage detection dataset and the Ultralytics 
 
 ---
 
-**Project:** Road Damage Detection & Severity Assessment Using Deep Learning  
-**Application:** RoadLens  
-**Developer:** [Beingkarthik on GitHub](https://github.com/Beingkarthik)
+Project: Road Damage Detection & Severity Assessment Using Deep Learning  
+Application: RoadLens  
+Developer: [Beingkarthik on GitHub](https://github.com/Beingkarthik)
+
