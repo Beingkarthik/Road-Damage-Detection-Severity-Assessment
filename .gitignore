@@ -24,4 +24,15 @@ runs/
 *.pt
 
 # Secrets
-.env
+.env# Local deployment and diagnostic files
+1
+Road-Damage-Detection-Severity-Assessment/
+app.py.before_cloud_deployment
+prepare_deployment.py
+export_dataset_test_images.py
+sample_test_images/
+
+# Model checkpoints and datasets
+*.pt
+data/
+runs/
