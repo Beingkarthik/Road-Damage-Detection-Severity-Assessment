@@ -1,0 +1,27 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+data/raw/*
+data/processed/*
+models/*.pt
+results/
+.ipynb_checkpoints/
+.env
+kaggle.json
+# Python environment and cache
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Dataset and training outputs
+data/
+runs/
+*.cache
+
+# Model checkpoints
+*.pt
+
+# Secrets
+.env
