@@ -1,11 +1,11 @@
 ﻿numpy
 pandas
 matplotlib
-opencv-python
+opencv-python-headless
 Pillow
 PyYAML
 tqdm
 ultralytics
-streamlit
-streamlit-paste-button
-huggingface_hub
+streamlit>=1.40,<2
+altair>=5,<6
+huggingface_hub>=0.30
