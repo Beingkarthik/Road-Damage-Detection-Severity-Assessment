@@ -1,4 +1,4 @@
-numpy
+﻿numpy
 pandas
 matplotlib
 opencv-python
@@ -6,3 +6,5 @@ Pillow
 PyYAML
 tqdm
 ultralytics
+streamlit
+streamlit-paste-button
