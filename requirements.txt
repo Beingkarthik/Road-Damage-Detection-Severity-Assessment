@@ -8,3 +8,4 @@ tqdm
 ultralytics
 streamlit
 streamlit-paste-button
+huggingface_hub

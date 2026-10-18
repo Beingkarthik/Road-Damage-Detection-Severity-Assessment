@@ -5,6 +5,7 @@ import io
 import streamlit as st
 from PIL import Image, ImageOps
 from ultralytics import YOLO
+from huggingface_hub import hf_hub_download
 
 try:
     from streamlit_paste_button import paste_image_button
@@ -65,21 +66,53 @@ CLASS_NAMES = {
 
 
 def find_model_path() -> Path:
+    project_dir = Path(__file__).resolve().parent
+
+    # Use the local model when running on your computer.
+    candidates = [
+        project_dir / "models" / "completed_30_epochs_last.pt",
+        project_dir / "models" / "completed_30_epochs_last (1).pt",
+        project_dir / "models" / "best.pt",
+        project_dir / "models" / "yolov8n_fresh_fast_best.pt",
+    ]
+
     configured = os.getenv("ROAD_DAMAGE_MODEL")
-    candidates = []
     if configured:
-        candidates.append(Path(configured).expanduser())
-    candidates.extend(
-        [
-            Path(__file__).resolve().parent / "models" / "completed_30_epochs_last.pt",
-            Path(__file__).resolve().parent / "models" / "best.pt",
-            Path(__file__).resolve().parent / "models" / "yolov8n_fresh_fast_best.pt",
-        ]
-    )
+        configured_path = Path(configured).expanduser()
+        if configured_path.is_file():
+            return configured_path.resolve()
+
     for candidate in candidates:
         if candidate.is_file():
             return candidate
-    return candidates[0]
+
+    # Cloud fallback: retrieve the checkpoint from the private HF repository.
+    token = os.getenv("HF_TOKEN", "")
+    try:
+        token = st.secrets.get("HF_TOKEN", token)
+    except Exception:
+        pass
+
+    if not token:
+        raise RuntimeError(
+            "HF_TOKEN is missing. Configure it in Streamlit Cloud Secrets."
+        )
+
+    try:
+        return Path(
+            hf_hub_download(
+                repo_id="beingkarthik/roadlens-checkpoint",
+                filename="completed_30_epochs_last (1).pt",
+                token=token,
+                repo_type="model",
+            )
+        )
+    except Exception as exc:
+        raise RuntimeError(
+            "Private model download failed. Check HF_TOKEN permissions, "
+            "repository access, and the exact model filename. Error: "
+            + str(exc)
+        ) from exc
 
 
 @st.cache_resource(show_spinner="Loading the trained YOLO model…")
