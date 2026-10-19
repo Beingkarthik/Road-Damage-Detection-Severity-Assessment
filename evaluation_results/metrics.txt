@@ -1,0 +1,12 @@
+RoadLens - Road Damage Detection and Severity Assessment
+
+Test Dataset: RDD2022 held-out test split
+Test Images: 5758
+Ground-truth Instances: 9675
+
+Precision: 55.27%%
+Recall: 51.86%%
+mAP50: 51.66%%
+mAP50-95: 26.07%%
+Model: completed_30_epochs_last.pt
+Evaluation Device: CPU
