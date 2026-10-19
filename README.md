@@ -1,4 +1,4 @@
-# 🛣️ RoadLens — Road Damage Detection & Severity Assessment Using Deep Learning
+﻿# 🛣️ RoadLens — Road Damage Detection & Severity Assessment Using Deep Learning
 
 **An AI-powered computer vision application for detecting road-surface damage from images using a trained YOLO object-detection model.**
 
@@ -8,6 +8,14 @@
 [![Streamlit](https://img.shields.io/badge/Framework-Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
 
 ## 🚀 Live Application
+## 📸 Application Screenshots
+
+### Road Damage Detection
+![Road damage detection result](screenshots/roadlens-detection-result.png)
+
+### Multiple Damage Detections
+![Multiple road damage detections](screenshots/roadlens-multiple-detections.png)
+
 
 **Try RoadLens:** [Launch the live application](https://road-damage-detection-severity-assessment-vgzqefg8dabed4bkvx8q.streamlit.app/)
 
